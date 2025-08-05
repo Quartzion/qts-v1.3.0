@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.quartzion.com/sitemap.xml
+Sitemap: https://www.quartzion-dev.com/sitemap.xml

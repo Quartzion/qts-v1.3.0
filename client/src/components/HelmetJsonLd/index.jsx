@@ -11,7 +11,7 @@ export default function HelmetJsonLd() {
         "@graph": [
             {
                 "@type": "WebSite",
-                "name": "Quartzion.com",
+                "name": "Quartzion-dev.com",
                 "url": baseUrl,
                 "potentialAction": {
                     "@type": "SearchAction",
