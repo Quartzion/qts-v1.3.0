@@ -55,7 +55,7 @@ export default function TeamSection() {
                     <div className="team-member-details">
                         <h2>Peter Smith</h2>
                         <h3>CEO & Co-Founder</h3>
-                        <p>Peter Smith is a seasoned technology leader and full-stack engineer with nearly 20 years of experience delivering scalable, end-to-end solutions. With a background in software architecture and systems integration, he has led diverse teams in building robust, user-focused platforms across sectors.
+                        <p>Peter Smith is a seasoned technology leader and full-stack engineer with nearly 20 years of experience delivering scalable, end-to-end solutions. With a background in software architecture, Quality Assurance and systems integration, he has assisted diverse teams in building robust, user-focused platforms for the pharmecutical and cybersecurity sectors.
                             Passionate about technology for social good, Peter focuses on helping mission-driven organizations improve access, reduce overhead, and implement sustainable, high-impact digital solutions.</p>
                         <nav className="team-member-socials" aria-label="Social Links for Peter Smith">
                             <h4 className="visually-hidden">Connect with Peter on Social Media</h4>

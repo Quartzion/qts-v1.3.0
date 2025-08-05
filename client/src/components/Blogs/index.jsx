@@ -86,26 +86,6 @@ export default function Blogs() {
           >
             {expandedIdx === idx ? "Show less" : `Click to expand`}
           </Button>
-          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <span style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-              <FaEye /> {views[idx]}
-            </span>
-            <button
-              style={{
-                background: "none",
-                border: "none",
-                color: "inherit",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                gap: "4px"
-              }}
-              onClick={() => handleHeartClick(idx)}
-              aria-label="Like"
-            >
-              <FaHeart color="red" /> {hearts[idx]}
-            </button>
-          </div>
         </div>
       </article>
     </section>
