@@ -1,16 +1,13 @@
 import React from 'react';
 import {Button} from 'react-bootstrap';
-import { useState, useRef, useEffect } from "react";
+import {useRef, useEffect } from "react";
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import slugify from 'slugify';
-import { FaEye, FaHeart } from "react-icons/fa";
 import ReactDOM from "react-dom";
 import Overlay from "../Overlay";
 import blogs from '../../utils/blogData';
 
 export default function Blogs() {
-  const [hearts, setHearts] = useState([137, 61, 745]);
-  const [views, setViews] = useState([123, 98, 76]);
   const [searchParams, setSearchParams] = useSearchParams();
   const slug = searchParams.get('slug');
   const cardRefs = useRef([]);
@@ -20,14 +17,6 @@ export default function Blogs() {
   const expandedIdx = blogs.findIndex(
     blog => slugify(blog.title, { lower: true, strict: true }) === slug
   );
-
-  const handleHeartClick = (index) => {
-    setHearts((prev) => {
-      const updated = [...prev];
-      updated[index] += 1;
-      return updated;
-    });
-  };
 
   const handleToggle = (index) => {
     if (expandedIdx === index) {
