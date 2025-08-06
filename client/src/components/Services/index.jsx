@@ -1,4 +1,5 @@
 import React from 'react';
+import qtsServices from '../../utils/servicesData';
 
 export default function Services() {
     return (
@@ -7,52 +8,24 @@ export default function Services() {
                 <h1>Services</h1>
             </header>
             <section className="services-content">
-                <article className="service-card">
-                    <picture>
-                        <source srcSet='./Services_1.webp' type='image/webp'/>
-                        <img 
-                            src='./Services_1.jpg' 
-                            alt='stock photo for technical analysis' 
-                            className="service-image" 
-                            loading='lazy'
-                        />
-                    </picture>
-                    <div className="service-card-content">
-                    <h2>Technical Analysis</h2>
-                    <p>Submit your follow-up request below to learn more</p>
-                    </div>
-                </article>
-                <article className="service-card">
-                    <picture>
-                        <source srcSet='./Services_2.webp' type='image/webp'/>
-                        <img 
-                            src='./Services_2.jpg' 
-                            alt='stock photo for troubleshooting' 
-                            className="service-image"
-                            loading='lazy'
-                        />
-                    </picture>
-                    <div className="service-card-content">
-                    <h2>Troubleshooting Session</h2>
-                    <p>Submit your follow-up request below to learn more</p>
-                    </div>
-                </article>
-                <article className="service-card">
-                    <picture>
-                        <source srcSet='./Services_3.webp' type='image/webp'/>
-                        <img 
-                            src='./Services_3.jpg' 
-                            alt='stock photo for solution development' 
-                            className="service-image" 
-                            loading='lazy'
-                        />
-                    </picture>
-                    <div className="service-card-content">
-                        <h2>Solution Development</h2>
-                        <p>Submit your follow-up request below to learn more</p>
-                    </div>
-                </article>
-            </section>
+                {qtsServices.map((service, idx) => (
+                    <article className='service-card' key={idx}>
+                        <picture>
+                            <source srcSet={service.image.webp}/>
+                            <img 
+                                src={service.image.jpg}
+                                alt={`stock photo for ${service.title}`}
+                                className='service-image'
+                                loading='lazy'
+                            />
+                        </picture>
+                        <div className='service-card-content'>
+                            <h2>{service.title}</h2>
+                            <p>{service.description}</p>
+                        </div>
+                    </article>
+                ))}
+            </section> 
         </section>
     );
 };
