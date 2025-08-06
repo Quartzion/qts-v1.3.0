@@ -314,7 +314,11 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-
+.connect-with-us-section {
+    background-color: #222;
+    color: #F0FFFF;
+    padding: 2%; 
+}
 .connect-with-us-form {
     margin-top: 2%;
     padding: 2%;

@@ -6,7 +6,6 @@ export default function AboutUs() {
             <header className="about-us-header">
                 <h2 id="about-us">About Us</h2>
             </header>
-            <hr className="divider"/>
             <article className="about-us-content">
                 <div className="about-us-text">
                     <h3>Our Expertise</h3>

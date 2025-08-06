@@ -7,6 +7,7 @@ import TeamSection from '../components/TeamSection';
 import AboutUs from '../components/AboutUs';
 import Services from '../components/Services';
 import Blogs from '../components/Blogs';
+import ConnectWithUs from '../components/ConnectWithUs';
 import HelmetJsonLd from '../components/HelmetJsonLd';
 
 export default function Page1() {
@@ -23,6 +24,8 @@ export default function Page1() {
                 <WelcomeBanner />
                 <TeamSection />
                 <AboutUs />
+                <ConnectWithUs />
+                <hr className="divider"/>
                 <Services />
                 <Blogs />
             </main>
