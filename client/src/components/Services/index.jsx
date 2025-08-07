@@ -1,5 +1,4 @@
-import React from 'react';
-import { useRef } from "react";
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import ReactDOM from "react-dom";
 import Overlay from "../Overlay";
@@ -49,7 +48,7 @@ export default function Services() {
                 ReactDOM.createPortal(
                     <Overlay
                         className="card-overlay-bg"
-                        onClose={() => closeOverlay(searchParams)}
+                        onClose={() => closeOverlay(setSearchParams)}
                     >
                         {renderCard(qtsServices[expandedIdx], expandedIdx, expandedIdx, cardRefs, handleToggleFn, true)}
                     </Overlay>,

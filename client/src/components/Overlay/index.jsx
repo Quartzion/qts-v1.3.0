@@ -8,10 +8,10 @@ export default function Overlay({ children, onClose, className = "" }) {
     useEffect(() => {
 
         // scrol to top 
-requestAnimationFrame(() => {
-    const scrollableCard = overlayRef.current?.querySelector(".blog-card.overlay");
-    scrollableCard?.scrollTo({ top: 0, behavior: "auto" });
-});
+        requestAnimationFrame(() => {
+            const scrollableCard = overlayRef.current?.querySelector(".blog-card.overlay");
+            scrollableCard?.scrollTo({ top: 0, behavior: "auto" });
+        });
 
         // blur background
         const focusableElements = overlayRef.current.querySelectorAll(

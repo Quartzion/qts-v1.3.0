@@ -1,7 +1,5 @@
 import React from 'react';
 import slugify from "slugify";
-import blogs from "./blogData";
-import qtsServices from './servicesData';
 import { Button } from "react-bootstrap";
 
 // Get expanded index from slug
@@ -9,29 +7,39 @@ export function getExpandedIdx(data, slug) {
     return data.findIndex(
         item => slugify(item.title, { lower: true, strict: true }) === slug
     );
-}
+};
 
 // get slug from title
 export function getSlug(title) {
     return slugify(title, { lower: true, strict: true });
-}
+};
 
 // handle expand/collapse navigation
 export function handleToggle(data, navigate, expandedIdx, idx, route = "blogs") {
     if (expandedIdx === idx) {
-        // If already expanded, clicking "Show less" should return to root
+        // Collapse overlay and scroll to section
         navigate(`/`, { replace: false });
+
+        // Scroll to section anchor manually
+        setTimeout(() => {
+            const target = document.getElementById(route);
+            if (target) {
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        }, 100);
     } else {
-        // Otherwise, navigate to show the overlay
         const slug = getSlug(data[idx].title);
         navigate(`/${route}?slug=${slug}`, { replace: false });
     }
-};
+}
+
 
 // close overlay
 export const closeOverlay = (setSearchParams) => {
     setSearchParams({});
 };
+
+
 
 // overlay effect logic
 export function useOverlayEffect(location, expandedIdx, setSearchParams) {
@@ -39,11 +47,11 @@ export function useOverlayEffect(location, expandedIdx, setSearchParams) {
         const currentSlug = new URLSearchParams(location.search).get('slug');
         if (!currentSlug && expandedIdx !== -1) {
             closeOverlay(setSearchParams);
-        }
+        };
 
 
     }, [location, expandedIdx, setSearchParams]);
-}
+};
 
 // render blog card
 export function renderCard(item, idx, expandedIdx, cardRefs, handleToggle, isOverlay = false, type = "blog") {
@@ -87,4 +95,4 @@ export function renderCard(item, idx, expandedIdx, cardRefs, handleToggle, isOve
             </article>
         </section>
     );
-}
+};
