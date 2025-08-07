@@ -8,6 +8,7 @@ export default function Services() {
                 <h1>Services</h1>
             </header>
             <section className="services-content">
+                
                 {qtsServices.map((service, idx) => (
                     <article className='service-card' key={idx}>
                         <picture>
@@ -25,6 +26,7 @@ export default function Services() {
                         </div>
                     </article>
                 ))}
+                
             </section> 
         </section>
     );
