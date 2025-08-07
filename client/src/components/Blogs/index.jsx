@@ -1,8 +1,6 @@
 import React from 'react';
-import {Button} from 'react-bootstrap';
-import {useRef, useEffect } from "react";
+import { useRef } from "react";
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
-import slugify from 'slugify';
 import ReactDOM from "react-dom";
 import Overlay from "../Overlay";
 import blogs from '../../utils/blogData';
@@ -21,13 +19,13 @@ export default function Blogs() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const expandedIdx = getExpandedIdx(slug);
+  const expandedIdx = getExpandedIdx(blogs, slug);
 
   // overlay effect imported from utils
   useOverlayEffect(location, expandedIdx, setSearchParams);
 
   // toggle handler
-  const handleToggleFn = (idx) => handleToggle(navigate, expandedIdx, idx);
+  const handleToggleFn = (idx) => handleToggle(blogs, navigate, expandedIdx, idx, "blogs");
 
 
   return (
@@ -43,13 +41,13 @@ export default function Blogs() {
               // Hide the background copy of the expanded blog
               <div key={idx} style={{ visibility: "hidden", height: 0 }} />
             )
-            : renderCard(blog, idx, expandedIdx, cardRefs, handleToggleFn);
+            : renderCard(blog, idx, expandedIdx, cardRefs, handleToggleFn, false, "blog");
         })}
       </div>
       {expandedIdx !== -1 &&
         ReactDOM.createPortal(
           <Overlay
-            className="blog-overlay-bg"
+            className="card-overlay-bg"
             onClose={() => closeOverlay(setSearchParams)}
           >
             {renderCard(blogs[expandedIdx], expandedIdx, expandedIdx, cardRefs, handleToggleFn, true)}

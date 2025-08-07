@@ -1,12 +1,13 @@
 import React from 'react';
 import slugify from "slugify";
 import blogs from "./blogData";
+import qtsServices from './servicesData';
 import { Button } from "react-bootstrap";
 
 // Get expanded index from slug
-export function getExpandedIdx(slug) {
-    return blogs.findIndex(
-        blog => slugify(blog.title, { lower: true, strict: true }) === slug
+export function getExpandedIdx(data, slug) {
+    return data.findIndex(
+        item => slugify(item.title, { lower: true, strict: true }) === slug
     );
 }
 
@@ -16,14 +17,14 @@ export function getSlug(title) {
 }
 
 // handle expand/collapse navigation
-export function handleToggle(navigate, expandedIdx, idx) {
+export function handleToggle(data, navigate, expandedIdx, idx, route = "blogs") {
     if (expandedIdx === idx) {
         // If already expanded, clicking "Show less" should return to root
-        navigate('/', { replace: false });
+        navigate(`/`, { replace: false });
     } else {
         // Otherwise, navigate to show the overlay
-        const slug = getSlug(blogs[idx].title);
-        navigate(`/blogs?slug=${slug}`, { replace: false });
+        const slug = getSlug(data[idx].title);
+        navigate(`/${route}?slug=${slug}`, { replace: false });
     }
 };
 
@@ -33,7 +34,7 @@ export const closeOverlay = (setSearchParams) => {
 };
 
 // overlay effect logic
-export function useOverlayEffect(locatin, expandedIdx, setSearchParams) {
+export function useOverlayEffect(location, expandedIdx, setSearchParams) {
     React.useEffect(() => {
         const currentSlug = new URLSearchParams(location.search).get('slug');
         if (!currentSlug && expandedIdx !== -1) {
@@ -45,42 +46,42 @@ export function useOverlayEffect(locatin, expandedIdx, setSearchParams) {
 }
 
 // render blog card
-export function renderCard(blog, idx, expandedIdx, cardRefs, handleToggle, isOverlay = false) {
+export function renderCard(item, idx, expandedIdx, cardRefs, handleToggle, isOverlay = false, type = "blog") {
     return (
         <section
-            aria-labelledby={`blog-${idx}`}
+            aria-labelledby={`card-${idx}`}
             ref={el => {
                 if (!cardRefs.current) cardRefs.current =[];
                     cardRefs.current[idx] = el;
                 }}
-            className={`blog-card${expandedIdx !== -1 && expandedIdx !== idx ? " blurred" : ""}${expandedIdx === idx ? " expanded" : ""}${isOverlay ? " overlay" : ""}`}
+            className={`${type}-card${expandedIdx !== -1 && expandedIdx !== idx ? " blurred" : ""}${expandedIdx === idx ? " expanded" : ""}${isOverlay ? " overlay" : ""}`}
             key={idx}
         >
             <img
-                src={blog.img}
-                alt={`Thumbnail for blog-${idx}`}
-                className="blog-image"
+                src={item.img}
+                alt={`Thumbnail for ${type}-${idx}`}
+                className="card-image"
                 loading='lazy'
             />
-            <article id={`blog-${idx}`} className="blog-card-content">
+            <article id={`${type}-card-${idx}`} className={`${type}-card-content`}>
                 <header>
-                    <h4>{blog.title}</h4>
+                    <h4>{item.title}</h4>
                 </header>
                 <p>
                     {expandedIdx === idx
-                        ? blog.content
-                        : blog.content.slice(0, 250) + (blog.content.length > 250 ? "..." : "")}
+                        ? item.content
+                        : item.content.slice(0, 250) + (item.content.length > 250 ? "..." : "")}
                 </p>
-                <div className="blog-card-footer">
+                <div className="card-footer">
                     <Button
                         to="#"
                         onClick={(e) => {
                             e.preventDefault();
                             handleToggle(idx);
                         }}
-                        aria-label={`Read more about ${blog.title}`}
+                        aria-label={`Read more about ${item.title}`}
                     >
-                        {expandedIdx === idx ? "Show less" : `Click to expand`}
+                        {expandedIdx === idx ? "Show less" : `Click here to expand this ${type}`}
                     </Button>
                 </div>
             </article>
