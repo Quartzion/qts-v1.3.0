@@ -18,12 +18,12 @@ export default function Services() {
     const cardRefs = useRef([]);
     const navigate = useNavigate();
     const location = useLocation();
-    
+
     const expandedIdx = getExpandedIdx(qtsServices, slug);
 
     // overlay effect imported from utils
     useOverlayEffect(location, expandedIdx, setSearchParams);
-      
+
     // toggle handler
     const handleToggleFn = (idx) => handleToggle(qtsServices, navigate, expandedIdx, idx, "services");
 
@@ -33,18 +33,18 @@ export default function Services() {
                 <h1 id="services">Services</h1>
             </header>
             <section className="services-content">
-                
+
                 {qtsServices.map((service, idx) => {
 
                     const isExpanded = expandedIdx === idx;
-                    return expandedIdx !== -1 & isExpanded 
-                    ? (
-                        <div key={idx} style={{visibility: "hidden", height: 0}} />
-                    )
-                    : renderCard (service, idx, expandedIdx, cardRefs, handleToggleFn, false, "service");
-                    })}
-            </section> 
-            {expandedIdx !== -1 && 
+                    return expandedIdx !== -1 & isExpanded
+                        ? (
+                            <div key={idx} style={{ visibility: "hidden", height: 0 }} />
+                        )
+                        : renderCard(service, idx, expandedIdx, cardRefs, handleToggleFn, false, "service");
+                })}
+            </section>
+            {expandedIdx !== -1 &&
                 ReactDOM.createPortal(
                     <Overlay
                         className="card-overlay-bg"
