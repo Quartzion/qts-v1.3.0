@@ -36,7 +36,7 @@ export default function ConnectWithUs() {
         <section className="connect-with-us-section" role="region" aria-label="Connect With Us today for more information">
             <header className="connect-with-us-header">
                 <h3>Connect with Quartzion Today!</h3>
-                <p>Review our services below and submit your follow up request by clicking the button to connect with our engineers today!</p>
+                <p>Submit your follow-up request today! Click the button below and submit the form to our engineers for review. We will analyze the request and get back to you as soon as possible!</p>
             </header>
             <article>
                 <Button

@@ -3,7 +3,6 @@ import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import ReactDOM from "react-dom";
 import Overlay from "../Overlay";
 import qtsServices from '../../utils/servicesData';
-import ConnectWithUs from '../ConnectWithUs'
 import {
     getExpandedIdx,
     handleToggle,
@@ -22,37 +21,70 @@ export default function Services() {
 
     const expandedIdx = getExpandedIdx(qtsServices, slug);
 
+    const VISIBLE_COUNT = 3;
+    const [startIdx, setStartIdx] = useState(0);
+
+    // get 3 cards in a loop for carousel
+    const visibleServices = Array.from({ length: VISIBLE_COUNT }).map((_, i) =>
+        qtsServices[(startIdx + i) % qtsServices.length]
+    );
+
+    // pause carousel on hover
+    const [isPaused, setIsPaused] = useState(false);
+
+    useEffect(() => {
+        if (isPaused) return;
+        const interval = setInterval(() => {
+            setStartIdx((prev) => (prev + 1) % qtsServices.length);
+        }, 7000); //7 seconds
+
+        return () => clearInterval(interval);
+    }, [isPaused]);
+
+    useEffect(() => {
+        setIsPaused(expandedIdx !== -1);
+    }, [expandedIdx]);
+
     // overlay effect imported from utils
     useOverlayEffect(location, expandedIdx, setSearchParams);
 
     // toggle handler
-    const handleToggleFn = (idx) => handleToggle(qtsServices, navigate, expandedIdx, idx, "services");
+    const handleToggleFn = (actualIdx) => handleToggle(qtsServices, navigate, expandedIdx, actualIdx, "services");
 
     return (
         <section className="services-section" role="region" aria-label="Services">
             <header className="services-header">
                 <h3 id="services">Services</h3>
             </header>
-            <section className="services-content">
+            <section
+                className="services-content"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+            >
 
-                {qtsServices.map((service, idx) => {
-
-                    const isExpanded = expandedIdx === idx;
+                {visibleServices.map((service, i) => {
+                    const actualIdx = (startIdx + i) % qtsServices.length;
+                    const isExpanded = expandedIdx === actualIdx;
                     return expandedIdx !== -1 & isExpanded
                         ? (
-                            <div key={idx} style={{ visibility: "hidden", height: 0 }} />
+                            <div key={actualIdx} style={{ visibility: "hidden", height: 0 }} />
                         )
-                        : renderCard(service, idx, expandedIdx, cardRefs, handleToggleFn, false, "service");
+                        : renderCard(service, actualIdx, expandedIdx, cardRefs, handleToggleFn, false, "service");
                 })}
             </section>
+            <div className="carousel-controls">
+                <button onClick={() => setStartIdx((prev) => (prev - 1 + qtsServices.length) % qtsServices.length)} aria-label="Previous services">◀</button>
+                <button onClick={() => setStartIdx((prev) => (prev + 1) % qtsServices.length)} aria-label="Next services">▶</button>
+            </div>
             {expandedIdx !== -1 &&
                 ReactDOM.createPortal(
                     <Overlay
                         className="card-overlay-bg"
                         onClose={() => closeOverlay(setSearchParams)}
+                        onMouseEnter={() => setIsPaused(true)}
+                        onMouseLeave={() => setIsPaused(false)}
                     >
                         {renderCard(qtsServices[expandedIdx], expandedIdx, expandedIdx, cardRefs, handleToggleFn, true)}
-                    {/* <ConnectWithUs /> */}
                     </Overlay>,
                     document.body
                 )}
