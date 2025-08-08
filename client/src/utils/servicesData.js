@@ -133,6 +133,37 @@ Each Solution Development engagement includes:
 Let Quartzion design your next solution for long-term impact and total control.
 `,
     },
+    {
+        title: "Technology Upgrade",
+        img: "",
+        content: ``
+    },
+    {
+        title: "Technical Audits / Health Checks",
+        img: "",
+        content: ``
+    },
+    {
+        title: "Website Performance & Accessibility Improvements",
+        img: "",
+        content: ``
+    },
+    {
+        title: "Strategic Tech Planning Sessions",
+        img: "",
+        content: ``
+    },
+    {
+        title: "Form / Survey / Intake Setup & Optimization",
+        img: "",
+        content: ``
+    },
+    {
+        title: "Internal Tech Skills Workshops",
+        img: "",
+        content: ``
+    }
+
 ]
 
 export default qtsServices;
