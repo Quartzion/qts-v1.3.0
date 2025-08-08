@@ -308,10 +308,9 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
+
+/* connect with us */
 .connect-with-us-section {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
     background-color: #222;
     color: #F0FFFF;
     padding: 2%; 
@@ -447,7 +446,7 @@ body:has(.card-overlay-bg) {
     overflow: hidden;
 }
 
-.card-btn, .show-connect-with-us-form-button {
+.card-btn, .show-connect-with-us-form-button, .carousel-controls {
   display: flex;
   justify-content: center;
   align-items: center;

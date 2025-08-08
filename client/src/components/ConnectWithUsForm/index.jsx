@@ -14,10 +14,15 @@ const connectWithUsFormFields = [
     type: "radio", 
     required: false, 
     options: [
-      { label: "Consulting / Technical Inquiry" }, 
+      { label: "Technical Analysis" }, 
+      { label: "Troubleshooting Session"},
       { label: "Solution Development / Implementation" }, 
-      { label: "Technology Upgrade for an Existing System" }, 
-      { label: "Quality Assurance Audit" }
+      { label: "Technology Upgrade" }, 
+      { label: "Technical Audit" },
+      { label: "Website Performance & Accessibility Improvements"},
+      { label: "Strategic Tech Planning"},
+      { label: "Form / Survey / Intake Setup & Optimization"},
+      { label: "Internal Tech Skills Workshops"},
     ] },
   { label: "Organization Size", name: "orgSize", type: "radio", required: true, options: [{ label: "small (1-10 members)" }, { label: "medium (10-50 members)" }, { label: "Large (50+ members)" }] },
   { label: "What Priority is your technology need", name: "priority", type: "radio", required: false, options: [{ label: "low" }, { label: "medium" }, { label: "high" }] },

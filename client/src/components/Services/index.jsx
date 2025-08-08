@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import ReactDOM from "react-dom";
+import {Button} from 'react-bootstrap';
 import Overlay from "../Overlay";
 import qtsServices from '../../utils/servicesData';
 import {
@@ -73,8 +74,8 @@ export default function Services() {
                 })}
             </section>
             <div className="carousel-controls">
-                <button onClick={() => setStartIdx((prev) => (prev - 1 + qtsServices.length) % qtsServices.length)} aria-label="Previous services">◀</button>
-                <button onClick={() => setStartIdx((prev) => (prev + 1) % qtsServices.length)} aria-label="Next services">▶</button>
+                <a onClick={() => setStartIdx((prev) => (prev - 1 + qtsServices.length) % qtsServices.length)} aria-label="Previous services">◀</a>
+                <a onClick={() => setStartIdx((prev) => (prev + 1) % qtsServices.length)} aria-label="Next services">▶</a>
             </div>
             {expandedIdx !== -1 &&
                 ReactDOM.createPortal(

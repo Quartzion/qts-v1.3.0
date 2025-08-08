@@ -292,10 +292,9 @@ A strategic planning session is ideal when:
 `
     },
     {
-        title: "Form / Survey / Intake Setup & Optimization",
+        title: "Data Intake Setup & Optimization",
         img: "./Services_8.webp",
         content: `**When data collection falls short, decision-making suffers.** Quartzion’s **Form, Survey, & Intake Setup & Optimization** service is designed to streamline how your organization collects, processes, and utilizes input — whether from clients, staff, or stakeholders.
-
 This service focuses on building, improving, or reconfiguring digital forms and intake systems to be intuitive, efficient, and aligned with your goals. Whether you’re dealing with low completion rates, confusing workflows, integration gaps, or accessibility issues, our team provides the clarity and hands-on support to turn things around — fast.
 
 ---
@@ -335,7 +334,6 @@ Let’s simplify and strengthen your form-based workflows today.
         title: "Internal Tech Skills Workshops",
         img: "./Services_9.webp",
         content: `**Strong teams build stronger systems.** Quartzion’s **Internal Tech Skills Workshops** service is designed to equip your team with practical, role-specific technical skills that improve daily operations, communication, and long-term resilience.
-
 Whether your staff needs a better grasp of digital tools, improved data literacy, or deeper understanding of workflows and integrations, our workshops are hands-on, tailored, and delivered in language your team understands. We focus on real scenarios — not abstract theory — to make sure every session delivers immediate, usable value.
 
 ---
