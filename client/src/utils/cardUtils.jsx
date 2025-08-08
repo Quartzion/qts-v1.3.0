@@ -76,9 +76,11 @@ export function renderCard(item, idx, expandedIdx, cardRefs, handleToggle, isOve
                 <header>
                     <h4>{item.title}</h4>
                 </header>
-                    <ReactMarkdown>{expandedIdx === idx
+                    <ReactMarkdown>
+                        {expandedIdx === idx
                         ? item.content
-                        : item.content.slice(0, 250) + (item.content.length > 250 ? "..." : "")}
+                        : item.content.slice(0, 250) + (item.content.length > 250 ? "..." : "")
+                        }
                     </ReactMarkdown>
                 <div className="card-footer">
                     <Button

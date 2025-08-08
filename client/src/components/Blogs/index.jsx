@@ -10,7 +10,7 @@ import {
     closeOverlay,
     useOverlayEffect,
     renderCard
-} from '../../utils/blogUtils';
+} from '../../utils/cardUtils';
 
 export default function Blogs() {
   const [searchParams, setSearchParams] = useSearchParams();
