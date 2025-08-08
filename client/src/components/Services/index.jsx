@@ -30,7 +30,7 @@ export default function Services() {
     return (
         <section className="services-section" role="region" aria-label="Services">
             <header className="services-header">
-                <h1 id="services">Services</h1>
+                <h3 id="services">Services</h3>
             </header>
             <section className="services-content">
 
