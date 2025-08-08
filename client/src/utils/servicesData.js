@@ -30,7 +30,6 @@ The technical analysis comes with **no commitment** to further development contr
 
 > _Start with clarity. Get a clear, engineering-grade understanding of your technical landscape — before making commitments._
 
-**[Request a Technical Analysis →](#connect-with-us-form)**
 `,
     },
     {

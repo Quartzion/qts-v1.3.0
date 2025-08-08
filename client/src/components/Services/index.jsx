@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import ReactDOM from "react-dom";
 import Overlay from "../Overlay";
 import qtsServices from '../../utils/servicesData';
+import ConnectWithUs from '../ConnectWithUs'
 import {
     getExpandedIdx,
     handleToggle,
@@ -51,6 +52,7 @@ export default function Services() {
                         onClose={() => closeOverlay(setSearchParams)}
                     >
                         {renderCard(qtsServices[expandedIdx], expandedIdx, expandedIdx, cardRefs, handleToggleFn, true)}
+                    {/* <ConnectWithUs /> */}
                     </Overlay>,
                     document.body
                 )}

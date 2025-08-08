@@ -309,6 +309,9 @@
     border-bottom-right-radius: 0;
 }
 .connect-with-us-section {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
     background-color: #222;
     color: #F0FFFF;
     padding: 2%; 
@@ -440,8 +443,18 @@ color: #7BB0FE
 }
 
 /* Prevent background scroll when overlay is open */
-body:has(.blog-overlay-bg) {
+body:has(.card-overlay-bg) {
     overflow: hidden;
+}
+
+.card-btn, .show-connect-with-us-form-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto 0 auto; /* Top margin + horizontal centering */
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  max-width: fit-content; /* Prevents it from stretching full width */
 }
 
 /* Footer */
@@ -465,8 +478,9 @@ body:has(.blog-overlay-bg) {
 .footer-links {
     display: flex;
     flex-direction: row;
-    gap: 5%;
+    gap: 2rem;
     align-items: center;
+    padding-left: 7rem;
 }
 
 .footer-links svg {

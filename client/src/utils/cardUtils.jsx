@@ -2,6 +2,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown'
 import slugify from "slugify";
 import { Button } from "react-bootstrap";
+import ConnectWithUs from '../components/ConnectWithUs';
 
 // Get expanded index from slug
 export function getExpandedIdx(data, slug) {
@@ -82,8 +83,10 @@ export function renderCard(item, idx, expandedIdx, cardRefs, handleToggle, isOve
                         : item.content.slice(0, 250) + (item.content.length > 250 ? "..." : "")
                         }
                     </ReactMarkdown>
+                    {expandedIdx === idx ? <ConnectWithUs /> : ''}
                 <div className="card-footer">
                     <Button
+                        className='card-btn'
                         to="#"
                         onClick={(e) => {
                             e.preventDefault();
