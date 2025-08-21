@@ -10,7 +10,7 @@ export default function QtsPayPal() {
   return (
     <>
       <Button className = "donate-to-qts-btn" variant="primary" onClick={() => setShowOverlay(true)}>
-        Donate to Quartzion
+        💙 Donate to Quartzion 💙
       </Button>
 
       {showOverlay && (

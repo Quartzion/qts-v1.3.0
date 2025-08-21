@@ -467,6 +467,30 @@ body:has(.card-overlay-bg) {
     overflow: hidden;
 }
 
+/* Donate to QTS button */
+.donate-to-qts-btn {
+  background: linear-gradient(270deg, #ff7a18, #af002d, #319197);
+  background-size: 600% 600%;
+  animation: gradientShift 8s ease infinite;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.75rem 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.donate-to-qts-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(255, 122, 24, 0.6);
+}
+
 .card-btn, .show-connect-with-us-form-button, .carousel-controls, .donate-to-qts-btn {
   display: flex;
   justify-content: center;
