@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Alert } from "react-bootstrap";
 import { isProd, getApiBaseUrl } from '../../utils/env';
 import ConnectWithUsForm from "../ConnectWithUsForm";
+import QtsPayPal from "../QtsPayPal";
 
 export default function ConnectWithUs() {
     const [expanded, setExpanded] = useState(false);
@@ -38,6 +39,7 @@ export default function ConnectWithUs() {
                 <h3>Connect with Quartzion Today!</h3>
                 <p>Submit your follow-up request today! Click the button below and submit the form to our engineers for review. We will analyze the request and get back to you as soon as possible!</p>
             </header>
+            <br />
             <article>
                 <Button
                     aria-label={expanded ? "Hide Connect with Us Form" : "Show Connect with Us Form"}
@@ -73,6 +75,8 @@ export default function ConnectWithUs() {
                         />
                     </div>
                 )}
+                <br />
+                <QtsPayPal />
             </article>
         </section>
     );

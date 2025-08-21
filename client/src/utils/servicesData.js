@@ -216,9 +216,9 @@ Consider a technology audit or health check when:
 `
     },
     {
-        title: "Website Performance & Accessibility Improvements",
+        title: "Performance & Accessibility",
         img: "./Services_6.webp",
-        content: `**Quartzion’s Website Performance & Accessibility Improvements** service is designed to help your organization meet modern digital standards — ensuring your web experience is fast, inclusive, and optimized for all users. Our team identifies the friction points that slow down performance or limit access, and delivers clear, tactical upgrades to help your site meet its full potential.
+        content: `**Quartzion’s Website Performance & Accessibility Optimization** service is designed to help your organization meet modern digital standards — ensuring your web experience is fast, inclusive, and optimized for all users. Our team identifies the friction points that slow down performance or limit access, and delivers clear, tactical upgrades to help your site meet its full potential.
 
 ---
 

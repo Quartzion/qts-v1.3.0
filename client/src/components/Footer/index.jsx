@@ -7,6 +7,7 @@ import {
 
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import QtsPayPal from '../QtsPayPal';
 
 export default function Footer() {
     return (
@@ -66,6 +67,7 @@ export default function Footer() {
                     <section className="footer-center">
                         <h2 className="visually-hidden">legal</h2>
                         &copy; {new Date().getFullYear()} - Quartzion Technology Solutions Corp. All rights reserved. - version - {getQtsVersion()}
+                    <QtsPayPal />
                     </section>
                 </section>
             </Container>

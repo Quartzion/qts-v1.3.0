@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
 
-export default function Overlay({ children, onClose, className = "" }) {
+export default function Overlay({ children, className = "", onClose }) {
     const overlayRef = useRef(null);
     const navigate = useNavigate();
 
@@ -55,14 +56,29 @@ export default function Overlay({ children, onClose, className = "" }) {
         };
     }, [onClose]);
 
-    return (
+    return ReactDOM.createPortal(
         <div
-            className={className}
-            role="dialog"
-            aria-modal="true"
-            ref={overlayRef}
+            className={`card-overlay-bg ${className}`}
+            onClick={onClose}
         >
-            {children}
-        </div>
+            <div
+                className="overlay-content"
+                onClick={e => e.stopPropagation()} // Prevent closing when clicking inside
+                style={{
+                    margin: "auto",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    minHeight: "100vh",
+                }}
+                ref={overlayRef}
+                role="dialog"
+                aria-modal="true"
+            >
+                {children}
+            </div>
+        </div>,
+        document.body
     );
 };

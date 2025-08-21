@@ -467,7 +467,7 @@ body:has(.card-overlay-bg) {
     overflow: hidden;
 }
 
-.card-btn, .show-connect-with-us-form-button, .carousel-controls {
+.card-btn, .show-connect-with-us-form-button, .carousel-controls, .donate-to-qts-btn {
   display: flex;
   justify-content: center;
   align-items: center;

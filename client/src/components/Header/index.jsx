@@ -1,8 +1,6 @@
 import React from 'react';
-import {
-Container,
-Button
-} from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
+import QtsPayPal from '../QtsPayPal';
 
 export default function Header() {
 
@@ -22,6 +20,7 @@ export default function Header() {
                 <section className="header-text">
                     <div className="slogan">
                         <h2 className="header-slogan">Future Ready. Community Focused.</h2>
+                        <QtsPayPal />
                     </div>
                     <div className="title">
                         <h2 className="header-title">Quartzion Technology Solutions Corp.</h2>
