@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import Overlay from "../Overlay";
 
 export default function QtsPayPal() {
   const [showOverlay, setShowOverlay] = useState(false);
+  const [amount, setAmount] = useState("25.00");
 
   return (
     <>
@@ -15,6 +16,17 @@ export default function QtsPayPal() {
       {showOverlay && (
         <Overlay className="card-overlay-bg" onClose={() => setShowOverlay(false)}>
           <div className="paypal-bg">
+                        <Form.Group controlId="donationAmount" style={{ marginBottom: "1rem" }}>
+              <Form.Label>Donation Amount (USD)</Form.Label>
+              <Form.Control
+                type="number"
+                min="1"
+                step="0.01"
+                value={amount}
+                onChange={e => setAmount(e.target.value)}
+                style={{ maxWidth: "200px" }}
+              />
+            </Form.Group>
             <PayPalButtons
               style={{ layout: "vertical", color: "gold", shape: "rect", label: "donate" }}
               createOrder={(data, actions) => {
@@ -22,7 +34,7 @@ export default function QtsPayPal() {
                   purchase_units: [
                     {
                       amount: {
-                        value: "25.00",
+                        value: amount || "25.00",
                       },
                     },
                   ],
