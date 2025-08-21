@@ -427,6 +427,27 @@ color: #7BB0FE
     padding-top: 2rem;
     overflow-y: auto;  
 }
+/* paypal */
+.paypal-bg {
+    background-color: #F0FFFF;
+    box-shadow: 0 2% 8% rgba(0, 0, 0, 0.7);
+    border-radius: 1%;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90vw;
+    max-width: 350px;
+    padding-top: 2%;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    min-height: 0;
+    box-sizing: border-box;
+}
+
+.close-donate-window-btn {
+    background-color:#fd6978;
+    color: #333
+}
 
 /* Overlay card styling */
 .blog-card.overlay {
