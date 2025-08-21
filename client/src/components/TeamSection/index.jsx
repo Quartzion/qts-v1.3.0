@@ -3,6 +3,7 @@ import { Nav } from 'react-bootstrap';
 
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import QtsPayPal from '../QtsPayPal';
 
 export default function TeamSection() {
 
@@ -11,6 +12,7 @@ export default function TeamSection() {
             <article className="team-dialogue">
                 <header className="team-dialogue-header">
                     <h1 id="our-team">The Team</h1>
+                    <QtsPayPal />
                 </header>
                 <div className="team-dialogue-body">
                     <p> Pete and Joe share a deep commitment to leveraging technology as a force for good. With extensive experience in software engineering and organizational strategy, they co-founded Quartzion Technology Solutions Corp. to bridge the gap between innovation and impact.

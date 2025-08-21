@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { isProd, getApiBaseUrl } from '../../client/src/utils/env';
 
 import Header from './components/Header';
@@ -38,10 +39,10 @@ export default function App() {
     }, [API_BASE_URL]);
 
     return (
-        <>
+        <PayPalScriptProvider options={{ "client-id": "AU2ByiJ-LEE30EQ2uLhSNb2G3FKkhExh99Vr8qOnXzPFoiV1TvqMe7psScj6Emtke-zdl5xYYKzLhEla"}}>
             <Header />
             <Outlet />
             <Footer />
-        </>
+        </PayPalScriptProvider>
     );
 };

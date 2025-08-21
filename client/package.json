@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.14",
+    "@paypal/react-paypal-js": "^8.8.3",
     "bootstrap": "^5.3.6",
     "dotenv": "^16.5.0",
     "graphql": "^16.6.0",
