@@ -1,8 +1,8 @@
-import { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { Button, Alert } from "react-bootstrap";
 import { isProd, getApiBaseUrl } from '../../utils/env';
 import ConnectWithUsForm from "../ConnectWithUsForm";
-import QtsPayPal from "../QtsPayPal";
+const QtsPayPal = React.lazy(()=> import("../QtsPayPal"))
 
 export default function ConnectWithUs() {
     const [expanded, setExpanded] = useState(false);

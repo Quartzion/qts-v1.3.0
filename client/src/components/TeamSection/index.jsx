@@ -1,10 +1,9 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import { Nav } from 'react-bootstrap';
 
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-import QtsPayPal from '../QtsPayPal';
-
+const QtsPayPal = React.lazy(()=> import("../QtsPayPal"))
 export default function TeamSection() {
 
     return (

@@ -1,6 +1,6 @@
-import React from 'react';
+import React,  { Suspense } from 'react';
 import { Container } from 'react-bootstrap'
-import QtsPayPal from '../QtsPayPal';
+const QtsPayPal = React.lazy(() => import("../QtsPayPal"))
 
 export default function Header() {
 
