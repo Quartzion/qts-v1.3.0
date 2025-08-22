@@ -83,6 +83,8 @@ export default function QtsPayPal() {
             </Form.Group>
 
             <PayPalButtons
+              // key forces re-render when the amount changes
+              key={amount}
               style={{ layout: "vertical", color: "gold", shape: "rect", label: "donate" }}
               createOrder={(data, actions) => {
                 return actions.order.create({
