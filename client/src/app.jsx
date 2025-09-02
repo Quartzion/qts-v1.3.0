@@ -2,6 +2,9 @@ import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { isProd, getApiBaseUrl } from '../../client/src/utils/env';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -39,7 +42,7 @@ export default function App() {
     }, [API_BASE_URL]);
 
     return (
-        <PayPalScriptProvider options={{ "client-id": "AU2ByiJ-LEE30EQ2uLhSNb2G3FKkhExh99Vr8qOnXzPFoiV1TvqMe7psScj6Emtke-zdl5xYYKzLhEla"}}>
+        <PayPalScriptProvider options={{ "client-id": `${VITE_PAYPAL_APP_CLIENT}`}}>
             <Header />
             <Outlet />
             <Footer />
