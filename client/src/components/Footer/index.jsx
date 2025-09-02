@@ -1,5 +1,5 @@
 import React, {Suspense} from 'react';
-import getQtsVersion from '../../utils/env';
+import { getQtsVersion } from '../../utils/env';
 import {
     Container,
     Nav

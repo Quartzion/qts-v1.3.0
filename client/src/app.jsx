@@ -1,14 +1,11 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-import { isProd, getApiBaseUrl } from '../../client/src/utils/env';
+import { isProd, getApiBaseUrl, getPayPalClientId } from '../../client/src/utils/env';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './appStyle.css'
 
-import dotenv from 'dotenv';
-dotenv.config();
-const VITE_PAYPAL_APP_CLIENT = process.env.VITE_PAYPAL_APP_CLIENT;
 
 export default function App() {
 
@@ -17,7 +14,8 @@ export default function App() {
     }
 
     const API_BASE_URL = getApiBaseUrl();
-
+    const VITE_PAYPAL_APP_CLIENT = getPayPalClientId();
+    
     useEffect(() => {
         const wakeup = async () => {
             try {
