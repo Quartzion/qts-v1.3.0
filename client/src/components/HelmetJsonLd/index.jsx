@@ -94,7 +94,7 @@ export default function HelmetJsonLd() {
             })),
 
             ...services.map(service => ({
-                "@type": "Product",
+                "@type": ["Service","Product", "BlogPosting"],
                 "@id": `${baseUrl}/services?slug=${slugify(service.title, { lower: true, strict: true })}`,
                 "name": service.title,
                 "description": service.description || service.content.slice(0, 160),
@@ -105,7 +105,6 @@ export default function HelmetJsonLd() {
                     "@type": "Offer",
                     "url": `${baseUrl}/services?slug=${slugify(service.title, { lower: true, strict: true })}`,
                     "priceCurrency": "USD",
-                    "price": "0.00",
                     "availability": "https://schema.org/InStock"
                 }
             }))
