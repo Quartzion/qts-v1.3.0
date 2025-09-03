@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import slugify from 'slugify';
 import blogs from '../../utils/blogData';
+import services from '../../utils/servicesData';
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 export default function HelmetJsonLd() {
@@ -50,8 +51,28 @@ export default function HelmetJsonLd() {
                 "url": `${baseUrl}/blogs?slug=${slugify(blog.title, { lower: true, strict: true })}`,
                 "image": `${baseUrl}${blog.img.replace(/^\./, '')}`,
                 "wordCount": blog.content.split(/\s+/).length
+            })),
+
+            ...services.map(service => ({
+                "@type": "Service",
+                "name": service.title,
+                "description": service.description || service.content.slice(0, 160),
+                "provider": {
+                    "@type": "Organization",
+                    "name": "Quartzion Technology Solutions Corp.",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": `${baseUrl}/qts-icon-2.webp`
+                    }
+                },
+                "areaServed": "United States",
+                "serviceType": "Technology",
+                "keywords": "technology, nonprofit, innovation, Quartzion, community, development, 501c3",
+                "url": `${baseUrl}/services?slug=${slugify(service.title, { lower: true, strict: true })}`,
+                "image": `${baseUrl}${service.img.replace(/^\./, '')}`,
             }))
-        ]
+
+        ],
     };
 
     return (
