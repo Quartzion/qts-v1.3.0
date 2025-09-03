@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet';
 import slugify from 'slugify';
 import blogs from '../../utils/blogData';
 import services from '../../utils/servicesData';
+import { getReviewsForService } from '../../utils/reviewUtils';
+
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const qtsPhoneNumber = import.meta.env.VITE_QTS_PHONE;
 
@@ -94,19 +96,44 @@ export default function HelmetJsonLd() {
             })),
 
             ...services.map(service => ({
-                "@type": ["Service","Product"],
+                "@type": ["Service", "Product"],
                 "@id": `${baseUrl}/services?slug=${slugify(service.title, { lower: true, strict: true })}`,
                 "name": service.title,
+                "image": `${baseUrl}${service.img.replace(/^\./, '')}`,
                 "description": service.description || service.content.slice(0, 160),
                 "brand": {
+                    "@type": "Organization",
                     "@id": `${baseUrl}/#organization`
                 },
                 "offers": {
                     "@type": "Offer",
                     "url": `${baseUrl}/services?slug=${slugify(service.title, { lower: true, strict: true })}`,
                     "priceCurrency": "USD",
+                    "price": "0.00",
+                    "shippingDetails": "",
+                    "hasMerchantReturnPolicy": {
+                        "@type": "MerchantReturnPolicy",
+                        "returnPolicyCategory": "https://schema.org/NoReturn"
+                    },
+                    "shippingDetails": {
+                        "@type": "OfferShippingDetails",
+                        "shippingRate": {
+                            "@type": "MonetaryAmount",
+                            "value": "0.00",
+                            "currency": "USD"
+                        },
+                        "shippingDestination": {
+                            "@type": "DefinedRegion",
+                            "name": "US"
+                        },
+                        "deliveryTime": {
+                            "@type": "ShippingDeliveryTime",
+                            "transitTime": "P0D"
+                        }
+                    },
                     "availability": "https://schema.org/InStock"
-                }
+                },
+                "review": getReviewsForService(service.title)
             }))
         ],
     };
