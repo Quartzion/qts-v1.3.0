@@ -94,7 +94,7 @@ export default function HelmetJsonLd() {
             })),
 
             ...services.map(service => ({
-                "@type": ["Service","Product", "BlogPosting"],
+                "@type": ["Service","Product"],
                 "@id": `${baseUrl}/services?slug=${slugify(service.title, { lower: true, strict: true })}`,
                 "name": service.title,
                 "description": service.description || service.content.slice(0, 160),
