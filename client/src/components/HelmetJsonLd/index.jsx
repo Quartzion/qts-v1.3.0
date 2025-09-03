@@ -8,6 +8,9 @@ import { getReviewsForService } from '../../utils/reviewUtils';
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const qtsPhoneNumber = import.meta.env.VITE_QTS_PHONE;
 
+const nextYear = new Date();
+nextYear.setFullYear(nextYear.getFullYear() + 1);
+
 export default function HelmetJsonLd() {
 
     const structuredData = {
@@ -110,6 +113,7 @@ export default function HelmetJsonLd() {
                     "url": `${baseUrl}/services?slug=${slugify(service.title, { lower: true, strict: true })}`,
                     "priceCurrency": "USD",
                     "price": "0.00",
+                    "priceValidUntil": nextYear.toISOString().split('T')[0],
                     "shippingDetails": "",
                     "hasMerchantReturnPolicy": {
                         "@type": "MerchantReturnPolicy",
