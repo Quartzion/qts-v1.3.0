@@ -106,7 +106,8 @@ export default function HelmetJsonLd() {
                 "description": service.description || service.content.slice(0, 160),
                 "brand": {
                     "@type": "Organization",
-                    "@id": `${baseUrl}/#organization`
+                    "@id": `${baseUrl}/#organization`,
+                    "name": "Quartzion Technology Solutions Corp."
                 },
                 "offers": {
                     "@type": "Offer",
@@ -114,17 +115,17 @@ export default function HelmetJsonLd() {
                     "priceCurrency": "USD",
                     "price": "0.00",
                     "priceValidUntil": nextYear.toISOString().split('T')[0],
-                    "shippingDetails": "",
                     "hasMerchantReturnPolicy": {
                         "@type": "MerchantReturnPolicy",
-                        "returnPolicyCategory": "https://schema.org/NoReturn"
+                        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
                     },
                     "shippingDetails": {
                         "@type": "OfferShippingDetails",
                         "shippingRate": {
                             "@type": "MonetaryAmount",
                             "value": "0.00",
-                            "currency": "USD"
+                            "currency": "USD",
+                            "addressCountry": "US"
                         },
                         "shippingDestination": {
                             "@type": "DefinedRegion",
@@ -132,10 +133,33 @@ export default function HelmetJsonLd() {
                         },
                         "deliveryTime": {
                             "@type": "ShippingDeliveryTime",
-                            "transitTime": "P0D"
+                            "handlingTime": {
+                                "@type": "QuantitativeValue",
+                                "minValue": 0,
+                                "maxValue": 0,
+                                "unitCode": "d"
+                            },
+                            "transitTime": {
+                                "@type": "QuantitativeValue",
+                                "minValue": 0,
+                                "maxValue": 0,
+                                "unitCode": "d"
+                            }
+                        },
+                        "shippingRate": {
+                            "@type": "MonetaryAmount",
+                            "value": 0,
+                            "currency": "USD"
+                        },
+                        "shippingDestination": {
+                            "@type": "DefinedRegion",
+                            "addressCountry": "US"
                         }
                     },
-                    "availability": "https://schema.org/InStock"
+                    "availability": "https://schema.org/InStock",
+                    "handlingTime": "0d",
+                    "applicableCountry": "US", 
+
                 },
                 "review": getReviewsForService(service.title)
             }))
