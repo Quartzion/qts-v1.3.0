@@ -500,10 +500,10 @@ body:has(.card-overlay-bg) {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1rem auto 0 auto; /* Top margin + horizontal centering */
+  margin: 1rem auto 0 auto;
   padding: 0.5rem 1.5rem;
   text-align: center;
-  max-width: fit-content; /* Prevents it from stretching full width */
+  max-width: fit-content;
 }
 
 /* Footer */
