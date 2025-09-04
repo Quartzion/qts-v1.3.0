@@ -45,6 +45,7 @@ export default function HelmetJsonLd() {
             },
             {
                 "@type": "LocalBusiness",
+                "priceRange": "$",
                 "@id": `${baseUrl}/#localbusiness`,
                 "name": "Quartzion Technology Solutions Corp.",
                 "image": {
@@ -104,17 +105,20 @@ export default function HelmetJsonLd() {
                 "name": service.title,
                 "image": `${baseUrl}${service.img.replace(/^\./, '')}`,
                 "description": service.description || service.content.slice(0, 160),
-                "brand": {
-                    "@type": "Organization",
-                    "@id": `${baseUrl}/#organization`,
-                    "name": "Quartzion Technology Solutions Corp."
-                },
                 "offers": {
-                    "@type": "Offer",
+                    "@type": "AggregateOffer",
                     "url": `${baseUrl}/services?slug=${slugify(service.title, { lower: true, strict: true })}`,
                     "priceCurrency": "USD",
-                    "price": "0.00",
+                    "lowPrice": "50",
+                    "highPrice": "1000",
+                    "applicableCountry": "US",
+                    "offerCount": "9",
                     "priceValidUntil": nextYear.toISOString().split('T')[0],
+                    "brand": {
+                        "@type": "Organization",
+                        "@id": `${baseUrl}/#organization`,
+                        "name": "Quartzion Technology Solutions Corp."
+                    },
                     "hasMerchantReturnPolicy": {
                         "@type": "MerchantReturnPolicy",
                         "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
@@ -157,8 +161,7 @@ export default function HelmetJsonLd() {
                         }
                     },
                     "availability": "https://schema.org/InStock",
-                    "handlingTime": "0d",
-                    "applicableCountry": "US", 
+                    "handlingTime": "0d", 
 
                 },
                 "review": getReviewsForService(service.title)
