@@ -309,6 +309,11 @@
     border-bottom-right-radius: 0;
 }
 
+.svc-fwrd-btn, .svc-bkwrd-btn {
+    background: none;
+    border-radius: 30%;
+}
+
 /* connect with us */
 .connect-with-us-section {
     background-color: #222;

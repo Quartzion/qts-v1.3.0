@@ -74,8 +74,8 @@ export default function Services() {
                 })}
             </section>
             <div className="carousel-controls">
-                <a onClick={() => setStartIdx((prev) => (prev - 1 + qtsServices.length) % qtsServices.length)} aria-label="Previous services">◀</a>
-                <a onClick={() => setStartIdx((prev) => (prev + 1) % qtsServices.length)} aria-label="Next services">▶</a>
+                <button className="svc-fwrd-btn" onClick={() => setStartIdx((prev) => (prev - 1 + qtsServices.length) % qtsServices.length)} aria-label="Previous services">◀</button>
+                <button className="svc-bkwrd-btn" onClick={() => setStartIdx((prev) => (prev + 1) % qtsServices.length)} aria-label="Next services">▶</button>
             </div>
             {expandedIdx !== -1 &&
                 ReactDOM.createPortal(
