@@ -60,6 +60,7 @@ export function renderCard(item, idx, expandedIdx, cardRefs, handleToggle, isOve
     return (
         <section
             aria-labelledby={`card-${idx}`}
+            id={`card-${idx}`}
             ref={el => {
                 if (!cardRefs.current) cardRefs.current =[];
                     cardRefs.current[idx] = el;
