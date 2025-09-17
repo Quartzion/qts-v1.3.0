@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "postbuild": "echo 'www.quartzion-dev.com' > build/CNAME"
+    "postbuild": "echo 'www.quartzion.com' > build/CNAME"
   },
   "dependencies": {
     "@apollo/client": "^3.7.14",

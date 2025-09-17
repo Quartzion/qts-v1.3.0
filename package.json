@@ -16,7 +16,7 @@
     "all-tests": "npm run test && npm run a11y-test && npm run color-contrast-test",
     "predeploy": "npm run dev-build",
     "deploy": "gh-pages -d client/build",
-    "postbuild": "echo 'www.quartzion-dev.com' > build/CNAME"
+    "postbuild": "echo 'www.quartzion.com' > build/CNAME"
   },
   "repository": {
     "type": "git",
