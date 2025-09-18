@@ -1,8 +1,14 @@
 import React,  { Suspense } from 'react';
 import { Container } from 'react-bootstrap'
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { getPayPalClientId } from '../../utils/env';
+
+
 const QtsPayPal = React.lazy(() => import("../QtsPayPal"))
 
 export default function Header() {
+
+    const VITE_PAYPAL_APP_CLIENT = getPayPalClientId();
 
     return (
         <header className="QTS-Header">
@@ -20,7 +26,11 @@ export default function Header() {
                 <section className="header-text">
                     <div className="slogan">
                         <h2 className="header-slogan">Future Ready. Community Focused.</h2>
-                        <QtsPayPal />
+                        <Suspense fallback={<div>Loading payment options…</div>}>
+                            <PayPalScriptProvider options={{ "client-id": VITE_PAYPAL_APP_CLIENT }}>
+                                <QtsPayPal />
+                            </PayPalScriptProvider>
+                        </Suspense> 
                     </div>
                     <div className="title">
                         <h2 className="header-title">Quartzion Technology Solutions Corp.</h2>

@@ -1,10 +1,14 @@
-import React, {Suspense} from 'react';
+import React, { Suspense } from 'react';
 import { Nav } from 'react-bootstrap';
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { getPayPalClientId } from '../../utils/env';
 
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-const QtsPayPal = React.lazy(()=> import("../QtsPayPal"))
+const QtsPayPal = React.lazy(() => import("../QtsPayPal"))
 export default function TeamSection() {
+
+    const VITE_PAYPAL_APP_CLIENT = getPayPalClientId();
 
     return (
         <section role="region" aria-labelledby="our-team">
@@ -49,7 +53,11 @@ export default function TeamSection() {
                         </Nav.Link>
                     </Nav>
                 </nav>
-                <QtsPayPal />
+                <Suspense fallback={<div>Loading payment options…</div>}>
+                    <PayPalScriptProvider options={{ "client-id": VITE_PAYPAL_APP_CLIENT }}>
+                        <QtsPayPal />
+                    </PayPalScriptProvider>
+                </Suspense>
             </article>
             <article className="team-members">
                 <section id="peter-smith" className="team-member">
@@ -93,15 +101,15 @@ export default function TeamSection() {
                         </nav>
                     </div>
                     <picture>
-                        <source srcSet='./pete-ceo-2.webp' type='image/webp'/>
-                        <img 
-                            src='./pete-ceo-2.png' 
-                            alt='A Photo of Peter Smith standing in front of a bookcase' 
-                            className='team-member-image' 
+                        <source srcSet='./pete-ceo-2.webp' type='image/webp' />
+                        <img
+                            src='./pete-ceo-2.png'
+                            alt='A Photo of Peter Smith standing in front of a bookcase'
+                            className='team-member-image'
                             loading='lazy'
                         />
                     </picture>
-                    
+
                 </section>
                 <section className="team-member">
                     <div className="team-member-details">
@@ -145,10 +153,10 @@ export default function TeamSection() {
                     </div>
                     <picture>
                         <source srcSet='./Joe-president-2.webp' type='image/webp' />
-                        <img 
-                            src='./Joe-president-2.jpeg' 
-                            alt='Portrait of Joseph Ruff wearing a suit' 
-                            className='team-member-image' 
+                        <img
+                            src='./Joe-president-2.jpeg'
+                            alt='Portrait of Joseph Ruff wearing a suit'
+                            className='team-member-image'
                             loading='lazy'
                         />
                     </picture>

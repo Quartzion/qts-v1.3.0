@@ -1,10 +1,13 @@
 import React, { useState, Suspense } from "react";
 import { Button, Alert } from "react-bootstrap";
-import { isProd, getApiBaseUrl } from '../../utils/env';
+import { isProd, getApiBaseUrl, getPayPalClientId } from '../../utils/env';
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import ConnectWithUsForm from "../ConnectWithUsForm";
-const QtsPayPal = React.lazy(()=> import("../QtsPayPal"))
+const QtsPayPal = React.lazy(() => import("../QtsPayPal"))
 
 export default function ConnectWithUs() {
+
+    const VITE_PAYPAL_APP_CLIENT = getPayPalClientId();
     const [expanded, setExpanded] = useState(false);
     const [successMessage, setSuccessMessage] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
@@ -76,7 +79,11 @@ export default function ConnectWithUs() {
                     </div>
                 )}
                 <br />
-                <QtsPayPal />
+                <Suspense fallback={<div>Loading payment options…</div>}>
+                    <PayPalScriptProvider options={{ "client-id": VITE_PAYPAL_APP_CLIENT }}>
+                        <QtsPayPal />
+                    </PayPalScriptProvider>
+                </Suspense>
             </article>
         </section>
     );

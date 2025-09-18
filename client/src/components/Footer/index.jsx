@@ -1,5 +1,7 @@
-import React, {Suspense} from 'react';
+import React, { Suspense } from 'react';
 import { getQtsVersion } from '../../utils/env';
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { getPayPalClientId } from '../../utils/env';
 import {
     Container,
     Nav
@@ -7,8 +9,11 @@ import {
 
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-const QtsPayPal = React.lazy(()=> import("../QtsPayPal"))
+const QtsPayPal = React.lazy(() => import("../QtsPayPal"))
 export default function Footer() {
+
+    const VITE_PAYPAL_APP_CLIENT = getPayPalClientId();
+
     return (
         <footer className="QTS-Header">
             <h1 className="visually-hidden">Footer Navigation</h1>
@@ -18,10 +23,10 @@ export default function Footer() {
                         <h2 className="visually-hidden">Company Logo</h2>
                         <picture>
                             <source srcSet="./QTS_L2_W_C.webp" type="image/webp" />
-                            <img 
-                                src="./QTS_L2_W_C.png" 
-                                alt="Quartzion Logo" 
-                                className="header-logo" 
+                            <img
+                                src="./QTS_L2_W_C.png"
+                                alt="Quartzion Logo"
+                                className="header-logo"
                                 loading='lazy'
                             />
                         </picture>
@@ -66,7 +71,11 @@ export default function Footer() {
                     <section className="footer-center">
                         <h2 className="visually-hidden">legal</h2>
                         &copy; {new Date().getFullYear()} - Quartzion Technology Solutions Corp. All rights reserved. - version - {getQtsVersion()}
-                    <QtsPayPal />
+                        <Suspense fallback={<div>Loading payment options…</div>}>
+                            <PayPalScriptProvider options={{ "client-id": VITE_PAYPAL_APP_CLIENT }}>
+                                <QtsPayPal />
+                            </PayPalScriptProvider>
+                        </Suspense>
                     </section>
                 </section>
             </Container>
