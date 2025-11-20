@@ -150,6 +150,15 @@ export default function HelmetJsonLd() {
                                 "unitCode": "d"
                             }
                         },
+                        "shippingRate": {
+                            "@type": "MonetaryAmount",
+                            "value": 0,
+                            "currency": "USD"
+                        },
+                        "shippingDestination": {
+                            "@type": "DefinedRegion",
+                            "addressCountry": "US"
+                        }
                     },
                     "availability": "https://schema.org/InStock",
                     "handlingTime": "0d", 
@@ -168,3 +177,4 @@ export default function HelmetJsonLd() {
         </Helmet>
     );
 };
+
