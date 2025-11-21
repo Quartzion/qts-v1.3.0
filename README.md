@@ -44,7 +44,7 @@ F2 --> B2
 F2 --> C2
 ```
 ---
-**Backend workflow**
+**Detailed workflow**
 ```mermaid
 flowchart TD
     UD_Web["User Devices - Web Browser (Client)"]
@@ -55,7 +55,7 @@ flowchart TD
     BE_Node["Node.js / Express API"]
     BE_Render["Render Web Service - Server Instance"]
 
-    DB_PG["PostgreSQL"]
+    DB_PG["MongoDB"]
     DB_Render["Render Managed DB"]
 
     CACHE_R["Redis Instance - Render Add-on"]
