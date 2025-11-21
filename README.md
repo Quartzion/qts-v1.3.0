@@ -43,3 +43,32 @@ F1 --> F2
 F2 --> B2
 F2 --> C2
 ```
+---
+**Backend workflow**
+```mermaid
+flowchart TD
+    UD_Web["User Devices - Web Browser (Client)"]
+
+    FE_Vite["Vite + React App - Static Build"]
+    FE_Static["GitHub Pages / Render Static Site"]
+
+    BE_Node["Node.js / Express API"]
+    BE_Render["Render Web Service - Server Instance"]
+
+    DB_PG["PostgreSQL"]
+    DB_Render["Render Managed DB"]
+
+    CACHE_R["Redis Instance - Render Add-on"]
+
+    DEV_Repo["GitHub Repo"]
+    DEV_CI["CI/CD Pipeline - GitHub Actions"]
+
+    UD_Web -->|HTTPS| FE_Static
+    FE_Static -->|API Calls| BE_Render
+    BE_Render -->|DB Queries| DB_Render
+    BE_Render -->|Cache GET/SET| CACHE_R
+
+    DEV_Repo --> DEV_CI
+    DEV_CI -->|Deploy Static| FE_Static
+    DEV_CI -->|Deploy API| BE_Render
+```
