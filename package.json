@@ -1,6 +1,6 @@
 {
   "name": "qts",
-  "version": "1.3.2",
+  "version": "1.3.4",
   "description": "QTS Public Web Site",
   "main": "index.js",
   "scripts": {
